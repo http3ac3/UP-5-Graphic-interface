@@ -17,7 +17,11 @@ namespace UP_5._1_Graphic_interface
             InitializeComponent();
         }
 
-        static double Function(double x) => Math.Sqrt(x * x - 1);
+        static double Function(double x)
+        {
+            x = Math.Round(x, 2);
+            return Math.Sqrt(x * x - 1);
+        }
 
         private void GetTableButton_Click(object sender, EventArgs e)
         {
@@ -47,13 +51,17 @@ namespace UP_5._1_Graphic_interface
 
             for (double x = a; x <= b; x += h)
             {
-                if (x == 0)
+                try
                 {
-                    TableTextBox.Text += "В точке 0 функция не определена!\n";
+                    if (Math.Round(x * x - 1, 2) < 0) throw new Exception($"В точке { Math.Round(x, 2) } функция не определена!");
+                }
+                catch (Exception ex)
+                {
+                    TableTextBox.Text += $"{Math.Round(x, 2)}\t| {ex.Message}\n";
                     continue;
                 }
-
-                TableTextBox.Text += $"{x}\t|{Function(x)}\n";
+               
+                TableTextBox.Text += $"{Math.Round(x, 2)}\t|{Function(x)}\n";
             }
         }
     }
