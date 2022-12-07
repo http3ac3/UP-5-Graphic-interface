@@ -25,22 +25,23 @@ namespace UP_5._1_Graphic_interface
 
         private void GetTableButton_Click(object sender, EventArgs e)
         {
+            double a, b, h;
             TableTextBox.Text = "";
-            if (!double.TryParse(AValueBox.Text, out double a))
+            if (!double.TryParse(AValueBox.Text, out a))
             {
                 MessageBox.Show("Поле а содержит недопустимые значения!\n" +
                     "К вводу доступны только цифры, знак \"минус\" и запятая!", "Ошибка");
                 return;
             }
 
-            if (!double.TryParse(BValueBox.Text, out double b))
+            if (!double.TryParse(BValueBox.Text, out b))
             {
                 MessageBox.Show("Поле b содержит недопустимые значения!\n" +
                     "К вводу доступны только цифры, знак \"минус\" и запятая!", "Ошибка");
                 return;
             }
 
-            if (!double.TryParse(HValueBox.Text, out double h))
+            if (!double.TryParse(HValueBox.Text, out h))
             {
                 MessageBox.Show("Поле h содержит недопустимые значения!\n" +
                     "К вводу доступны только цифры, знак \"минус\" и запятая!", "Ошибка");
